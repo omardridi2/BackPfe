@@ -24,6 +24,7 @@ public class Employe {
     private String adresse;
     private int telephone;
     private int matricule;
+    private String password;
     @OneToMany(mappedBy = "employee")
     List<Equipement> equipements;
 
