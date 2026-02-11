@@ -3,10 +3,12 @@ package cnstn.system_de_reservation_cnstn.models;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Generated;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -20,4 +22,8 @@ public class Evenement {
     private String description;
     private Date dateDebut;
     private Date dateFin;
+
+    @ManyToMany
+    private Set<Partenaire> partenaires = new HashSet<>();
+
 }
