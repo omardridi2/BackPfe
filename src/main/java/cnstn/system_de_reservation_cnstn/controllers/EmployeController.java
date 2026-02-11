@@ -23,7 +23,6 @@ public class EmployeController {
         return employeService.CreateEmploye(employe);
     }
 
-    //cette méthode est dedié pour l'affichage
     @GetMapping("/all")
     public List<Employe> afficher() {
         return employeService.findAll();
