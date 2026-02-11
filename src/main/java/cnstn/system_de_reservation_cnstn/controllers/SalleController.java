@@ -2,6 +2,7 @@ package cnstn.system_de_reservation_cnstn.controllers;
 
 import cnstn.system_de_reservation_cnstn.models.Salle;
 import cnstn.system_de_reservation_cnstn.services.SalleService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class SalleController {
 
     }
     @PostMapping("/add")
-    public Salle Create(@RequestBody Salle salle){
+    public Salle Create(@Valid @RequestBody Salle salle){
         return salleService.Create(salle);
 
     }

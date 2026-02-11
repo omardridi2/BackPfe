@@ -2,6 +2,7 @@ package cnstn.system_de_reservation_cnstn.controllers;
 
 import cnstn.system_de_reservation_cnstn.models.Equipement;
 import cnstn.system_de_reservation_cnstn.services.EquipementService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class EquipementController {
     }
 
     @PostMapping("/add")
-    public Equipement createEquipement(@RequestBody Equipement equipement){
+    public Equipement createEquipement(@Valid @RequestBody Equipement equipement){
         return equipementService.createEquipement(equipement);
     }
 
