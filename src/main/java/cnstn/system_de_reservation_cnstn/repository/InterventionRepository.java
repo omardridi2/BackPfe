@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface InterventionRepository extends JpaRepository<Intervention, Long> {
-    Optional<Intervention> findById(Long Id);
+    Intervention findInterventionById(Long id);
 }

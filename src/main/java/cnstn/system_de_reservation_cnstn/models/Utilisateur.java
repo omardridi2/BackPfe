@@ -10,14 +10,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Employe {
+public class Utilisateur {
 
 @Id
 @GeneratedValue(strategy= GenerationType.IDENTITY)
 
     private Long id;
     private String nom;
-
     private String prenom;
     private String email;
     private String poste;
@@ -25,7 +24,7 @@ public class Employe {
     private int telephone;
     private int matricule;
     private String password;
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "utilisateur")
     List<Equipement> equipements;
 
 

@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation,Long> {
-    Reservation findById(long id);
+    Reservation findReservationById(Long id);
 }

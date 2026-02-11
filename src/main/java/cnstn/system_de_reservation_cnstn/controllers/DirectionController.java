@@ -1,9 +1,9 @@
 package cnstn.system_de_reservation_cnstn.controllers;
 
 import cnstn.system_de_reservation_cnstn.models.Direction;
-import cnstn.system_de_reservation_cnstn.models.Employe;
+import cnstn.system_de_reservation_cnstn.models.Utilisateur;
 import cnstn.system_de_reservation_cnstn.services.DirectionService;
-import cnstn.system_de_reservation_cnstn.services.EmployeService;
+import cnstn.system_de_reservation_cnstn.services.UtilisateurService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

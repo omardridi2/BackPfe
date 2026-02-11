@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.AnyDiscriminatorImplicitValues;
 
 import java.util.Date;
 
@@ -22,7 +21,7 @@ public class Equipement {
     private Date dateDebut;
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
-    Employe employee;
+    Utilisateur utilisateur;
 
 
 }
