@@ -20,7 +20,7 @@ public class EquipementController {
         return equipementService.createEquipement(equipement);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Equipement> afficher(){
         return equipementService.findAll();
     }
