@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DocumentRepository extends JpaRepository<Document ,Long> {
-    Document findById(long id);
+    Document findDocumentById(long id);
 }

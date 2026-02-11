@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EmployeRepository extends JpaRepository<Employe,Long> {
-    Employe findByMatricule(int matricule);
+    Employe findEmployeByMatricule(int matricule);
 
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CatDocumentRepository extends JpaRepository<CatDocument, Long> {
-    CatDocument findById(long id);
+    CatDocument findCatDocumentById(long id);
 
 }
