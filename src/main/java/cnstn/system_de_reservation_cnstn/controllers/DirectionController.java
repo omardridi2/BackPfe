@@ -24,7 +24,7 @@ public class DirectionController {
     public Direction createDirection(@RequestBody Direction direction) {
         return directionService.createDirection(direction);
     }
-    @PostMapping("/all")
+    @GetMapping("/all")
     public List<Direction> afficher(){
         return directionService.findAll();
     }
