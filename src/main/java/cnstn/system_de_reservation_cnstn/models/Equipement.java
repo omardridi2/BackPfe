@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,9 +20,9 @@ public class Equipement {
     private String titre;
     private String type;
     private Date dateDebut;
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.EAGER)
-    Utilisateur utilisateur;
-
+   @ManyToOne(fetch = FetchType.LAZY)
+    private Utilisateur utilisateur;
+   @OneToMany(mappedBy = "equipement")
+    private List<Intervention>intervention;
 
 }

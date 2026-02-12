@@ -19,8 +19,10 @@ public class Document {
     private String type;
     private String chemin;
     private String niveauAcces;
+    @ManyToOne(fetch =  FetchType.LAZY)
+    private Evenement evenement;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private CatDocument catDocument;
 
-    @ManyToOne
-    private CatDocument categorie;
 }
 

@@ -1,5 +1,6 @@
 package cnstn.system_de_reservation_cnstn.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,14 +17,16 @@ public class Intervention {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String description;
     private String statut;
     private Date dateDemande;
-
-    @ManyToOne
-    private Utilisateur demandeur;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Utilisateur utilisateur;
+    @ManyToOne(fetch = FetchType.LAZY)
     private Equipement equipement;
+
+
 }
+
+
+
