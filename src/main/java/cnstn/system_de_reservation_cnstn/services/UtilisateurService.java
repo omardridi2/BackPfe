@@ -20,5 +20,9 @@ public class UtilisateurService {
     public List<Utilisateur> findAll() {
 
         return utilisateurRepository.findAll();
+
+    }
+    public List<Utilisateur> rechercherParNom(String nom) {
+        return utilisateurRepository.findByNomContainingIgnoreCase(nom);
     }
 }

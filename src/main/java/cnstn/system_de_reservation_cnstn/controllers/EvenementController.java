@@ -2,6 +2,7 @@ package cnstn.system_de_reservation_cnstn.controllers;
 
 import cnstn.system_de_reservation_cnstn.models.Evenement;
 import cnstn.system_de_reservation_cnstn.services.EvenementService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,13 +11,13 @@ import java.util.List;
 @RequestMapping("/Evenement")
 public class EvenementController {
 
-    private EvenementService evenementService;
+    private final EvenementService evenementService;
     public EvenementController(EvenementService evenementService)
     {
         this.evenementService=evenementService;
     }
     @PostMapping("/add")
-    public Evenement create(@RequestBody Evenement evenement){
+    public Evenement create( @Valid @RequestBody Evenement evenement){
         return evenementService.Create(evenement);
 
     }

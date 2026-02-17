@@ -2,12 +2,11 @@ package cnstn.system_de_reservation_cnstn.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data
@@ -22,6 +21,7 @@ public class Utilisateur {
     private Long id;
     private String nom;
     private String prenom;
+    @Email
     private String email;
     private String poste;
     private String adresse;
@@ -33,12 +33,24 @@ public class Utilisateur {
     @JsonIgnore
     @OneToMany(mappedBy = "utilisateur")
     private List<Intervention> intervention;
+
+
     @OneToMany(mappedBy = "utilisateur")
-    private List<Equipement> equipement;
-    @OneToMany(mappedBy = "utilisateur")
-    private List<Reservation> reservation;
-    @OneToMany(mappedBy = "utilisateur")
-    private List<Evenement>  evenement;
+    @JsonIgnore
+    private List<Evenement> evenements;
+    @ManyToOne
+    @JoinColumn(name = "service_id")
+    private Services service;
+
+    @ManyToMany
+    @JoinTable(
+            name = "utilisateur_document",
+            joinColumns = @JoinColumn(name = "utilisateur_id"),
+            inverseJoinColumns = @JoinColumn(name = "document_id")
+    )
+    private List<Document> documents = new ArrayList<>();
+
+
 
 }
 

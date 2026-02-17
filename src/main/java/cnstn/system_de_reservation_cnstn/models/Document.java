@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @Data
@@ -19,10 +22,14 @@ public class Document {
     private String type;
     private String chemin;
     private String niveauAcces;
-    @ManyToOne(fetch =  FetchType.LAZY)
-    private Evenement evenement;
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne
+    @JoinColumn(name = "catdocument_id")
     private CatDocument catDocument;
+
+    @ManyToMany(mappedBy = "documents")
+    private List<Utilisateur> utilisateurs = new ArrayList<>();
+
 
 }
 

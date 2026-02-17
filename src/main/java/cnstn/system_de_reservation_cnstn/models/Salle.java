@@ -22,9 +22,10 @@ public class Salle {
     private int capacite;
     private String nom;
     private String description;
-    @OneToMany(mappedBy = "salle")
-    @JsonIgnore
-    private List<Reservation> reservation;
+    @ManyToOne
+    @JoinColumn(name = "evenement_id")
+    private Evenement evenement;
+
 
 
 }

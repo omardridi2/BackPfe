@@ -1,29 +1,21 @@
 package cnstn.system_de_reservation_cnstn.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CatDocument {
-
+@Data
+public class Partenaire {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String categorie;
-    @JsonIgnore
-    @OneToMany(mappedBy = "catDocument")
-    private List<Document> document;
+    private String nom;
+    private String secteurActivite;
     @ManyToOne
-    @JoinColumn(name = "direction_id")
-    private Direction direction;
+    @JoinColumn(name = "evenement_id")
+    private Evenement evenement;
 }
-

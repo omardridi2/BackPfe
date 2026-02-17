@@ -6,7 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -20,10 +22,17 @@ public class Intervention {
     private String description;
     private String statut;
     private Date dateDemande;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "utilisateur_id")
     private Utilisateur utilisateur;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Equipement equipement;
+    @ManyToMany
+
+    @JoinTable(
+            name = "intervention_equipement",
+            joinColumns = @JoinColumn(name = "intervention_id"),
+            inverseJoinColumns = @JoinColumn(name = "equipement_id")
+    )
+    private List<Equipement> equipement = new ArrayList<>();
 
 
 }

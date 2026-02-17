@@ -13,9 +13,9 @@ import java.util.List;
 public class UtilisateurController {
     private final UtilisateurService utilisateurService;
 
-    public UtilisateurController(UtilisateurService employeService) {
+    public UtilisateurController(UtilisateurService utilisateurService) {
+        this.utilisateurService = utilisateurService;
 
-        this.utilisateurService = employeService;
     }
 
     @PostMapping("/add")
@@ -24,8 +24,16 @@ public class UtilisateurController {
     }
 
     @GetMapping("/all")
-    public List<Utilisateur> afficher() {
+    public List<Utilisateur> afficher()
+    {
         return utilisateurService.findAll();
+    }
+    @GetMapping("/search")
+    public List<Utilisateur> rechercherUtilisateur(@RequestParam (required = false) String nom) {
+        if (nom == null || nom.isEmpty()) {
+            return utilisateurService.findAll();
+        }
+        return utilisateurService.rechercherParNom(nom);
     }
 
 }

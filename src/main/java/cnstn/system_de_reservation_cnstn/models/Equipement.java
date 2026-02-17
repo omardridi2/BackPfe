@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,12 +18,18 @@ public class Equipement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String titre;
-    private String type;
-    private Date dateDebut;
-   @ManyToOne(fetch = FetchType.LAZY)
-    private Utilisateur utilisateur;
-   @OneToMany(mappedBy = "equipement")
-    private List<Intervention>intervention;
+    private Date dateAquisation;
+    private String etat;
+    private Boolean reservable;
+    @Enumerated(EnumType.STRING)
+    private TypeEquipement typeEquipement;
+    @ManyToOne
+    @JoinColumn(name = "evenement_id")
+    private Evenement evenement;
+
+    @ManyToMany(mappedBy = "equipement")
+    private List<Intervention> intervention = new ArrayList<>();
+
+
 
 }

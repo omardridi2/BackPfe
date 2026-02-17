@@ -6,23 +6,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.util.List;
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Reservation  {
+@Data
+public class Services {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date DateDebut ;
-    private Date DateFin ;
-    private String type;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Utilisateur utilisateur;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Equipement  equipement ;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Salle salle;
+    private String nom;
+    @ManyToOne
+    @JoinColumn(name = "direction_id")
+    private Direction direction;
+    @OneToMany(mappedBy = "service")
+    @JsonIgnore
+    private List <Utilisateur>  utilisateur;
 }

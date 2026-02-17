@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/CatDocument")
 public class CatDocumentController {
 
-    private CatDocumentService catDocumentService;
+    private final CatDocumentService catDocumentService;
 
     public CatDocumentController(CatDocumentService catDocumentService) {
         this.catDocumentService = catDocumentService;

@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/Document")
 public class DocumentController {
 
-    private DocumentService documentService;
+    private final DocumentService documentService;
 
     public DocumentController(DocumentService documentService) {
         this.documentService = documentService;
