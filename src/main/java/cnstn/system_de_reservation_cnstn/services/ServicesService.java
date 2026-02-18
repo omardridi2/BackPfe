@@ -17,4 +17,20 @@ public class ServicesService {
     public List<Services> findAllServices() {
         return servicesRepository.findAll();
     }
+    public void deleteService(Long id) {
+        servicesRepository.deleteById(id);
+    }
+
+    public Services updateService(Long id, Services service) {
+
+        Services existingService = servicesRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Service not found with id: " + id));
+
+        existingService.setNom(service.getNom());
+        existingService.setDirection(service.getDirection());
+
+        return servicesRepository.save(existingService);
+
+    }
+
 }

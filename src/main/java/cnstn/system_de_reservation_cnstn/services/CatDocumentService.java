@@ -21,4 +21,16 @@ public class CatDocumentService {
     public List<CatDocument> findAll() {
         return catDocumentRepository.findAll();
     }
+
+    public CatDocument updateCatDocument(Long id, CatDocument catDocument) {
+        CatDocument existingCatDocument = catDocumentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("CatDocument not found with id: " + id));
+        existingCatDocument.setCategorie(catDocument.getCategorie());
+        existingCatDocument.setDirection(catDocument.getDirection());
+        return catDocumentRepository.save(existingCatDocument);
+    }
+
+    public void deleteById(Long id) {
+        catDocumentRepository.deleteById(id);
+    }
 }

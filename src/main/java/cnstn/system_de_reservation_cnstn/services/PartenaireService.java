@@ -14,8 +14,13 @@ public class PartenaireService {
     public Partenaire createPartenaire(Partenaire partenaire) {
         return patenaireRepository.save(partenaire);
     }
-    public Partenaire updatePartenaire(Partenaire partenaire) {
-        return patenaireRepository.save(partenaire);
+
+    public Partenaire updatePartenaire(Long id, Partenaire partenaire) {
+        Partenaire existingPartenaire = patenaireRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Partenaire not found with id: " + id));
+        existingPartenaire.setNom(partenaire.getNom());
+        existingPartenaire.setSecteurActivite(partenaire.getSecteurActivite());
+        return patenaireRepository.save(existingPartenaire);
     }
 
     public List<Partenaire> findAll() {
@@ -25,4 +30,7 @@ public class PartenaireService {
         return patenaireRepository.findByNomContainsIgnoreCase(nom);
     }
 
+    public void deleteById(Long id) {
+        patenaireRepository.deleteById(id);
+    }
 }

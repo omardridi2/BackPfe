@@ -24,7 +24,5 @@ public class Direction {
     private List<Services> services;
     @OneToMany(mappedBy = "direction")
     private List<CatDocument>  catDocument;
-
-
 }
 

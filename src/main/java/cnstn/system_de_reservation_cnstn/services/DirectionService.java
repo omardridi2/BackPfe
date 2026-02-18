@@ -21,7 +21,16 @@ public class DirectionService {
         return directionRepository.findAll();
     }
 
+    public Direction updateDirection(Long id, Direction direction) {
+        Direction existingDirection = directionRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Direction not found with id: " + id));
+        existingDirection.setNom(direction.getNom());
+        return directionRepository.save(existingDirection);
+    }
 
+    public void deleteById(Long id) {
+        directionRepository.deleteById(id);
+    }
 }
 
 

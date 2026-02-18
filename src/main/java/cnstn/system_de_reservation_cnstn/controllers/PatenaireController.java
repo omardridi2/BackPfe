@@ -2,6 +2,7 @@ package cnstn.system_de_reservation_cnstn.controllers;
 
 import cnstn.system_de_reservation_cnstn.models.Partenaire;
 import cnstn.system_de_reservation_cnstn.services.PartenaireService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,8 +29,14 @@ public class PatenaireController {
     public List<Partenaire> searchPartenaire(@RequestBody (required = false)Partenaire partenaire){
         return partenaireService.findAll();
     }
-    @PutMapping("/update")
-    public Partenaire updatePartenaire(@RequestBody Partenaire partenaire){
-        return partenaireService.updatePartenaire(partenaire);
+    @PutMapping("/{id}")
+    public Partenaire updatePartenaire(@PathVariable Long id, @RequestBody Partenaire partenaire){
+        return partenaireService.updatePartenaire(id, partenaire);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable Long id) {
+        partenaireService.deleteById(id);
+        return ResponseEntity.ok("Partenaire supprimé avec succès");
     }
 }

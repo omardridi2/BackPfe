@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface ServicesRepository extends JpaRepository<Services, Long> {
     Services findByNomContainingIgnoreCase(String nom);
+    List<Services> findByNomContainingAndDirectionContaining(String nom, String direction);
+
 }

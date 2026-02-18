@@ -24,10 +24,19 @@ public class DirectionController {
     public Direction createDirection(@RequestBody Direction direction) {
         return directionService.createDirection(direction);
     }
-    @PostMapping("/all")
+    @GetMapping("/all")
     public List<Direction> afficher(){
         return directionService.findAll();
     }
 
+    @PutMapping("/{id}")
+    public Direction updateDirection(@PathVariable Long id, @RequestBody Direction direction) {
+        return directionService.updateDirection(id, direction);
+    }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable Long id) {
+        directionService.deleteById(id);
+        return ResponseEntity.ok("Direction supprimée avec succès");
+    }
 }

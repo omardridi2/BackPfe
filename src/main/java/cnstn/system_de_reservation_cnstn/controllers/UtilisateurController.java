@@ -1,9 +1,8 @@
 package cnstn.system_de_reservation_cnstn.controllers;
 
 import cnstn.system_de_reservation_cnstn.models.Utilisateur;
-import cnstn.system_de_reservation_cnstn.models.Utilisateur;
 import cnstn.system_de_reservation_cnstn.services.UtilisateurService;
-import cnstn.system_de_reservation_cnstn.services.UtilisateurService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,4 +35,14 @@ public class UtilisateurController {
         return utilisateurService.rechercherParNom(nom);
     }
 
+    @PutMapping("/{id}")
+    public Utilisateur updateUtilisateur(@PathVariable Long id, @RequestBody Utilisateur utilisateur) {
+        return utilisateurService.updateUtilisateur(id, utilisateur);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable Long id) {
+        utilisateurService.deleteById(id);
+        return ResponseEntity.ok("Utilisateur supprimé avec succès");
+    }
 }

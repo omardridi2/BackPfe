@@ -25,4 +25,17 @@ public class UtilisateurService {
     public List<Utilisateur> rechercherParNom(String nom) {
         return utilisateurRepository.findByNomContainingIgnoreCase(nom);
     }
+
+    public Utilisateur updateUtilisateur(Long id, Utilisateur utilisateur) {
+        Utilisateur existingUtilisateur = utilisateurRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Utilisateur not found with id: " + id));
+        existingUtilisateur.setNom(utilisateur.getNom());
+        existingUtilisateur.setPrenom(utilisateur.getPrenom());
+        existingUtilisateur.setEmail(utilisateur.getEmail());
+        return utilisateurRepository.save(existingUtilisateur);
+    }
+
+    public void deleteById(Long id) {
+        utilisateurRepository.deleteById(id);
+    }
 }

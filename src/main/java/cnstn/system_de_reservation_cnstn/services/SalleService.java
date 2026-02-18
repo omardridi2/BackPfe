@@ -19,4 +19,16 @@ public class SalleService {
         return saleRepository.findAll();
     }
 
+    public Salle updateSalle(Long id, Salle salle) {
+        Salle existingSalle = saleRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Salle not found with id: " + id));
+        existingSalle.setNom(salle.getNom());
+        existingSalle.setCapacite(salle.getCapacite());
+        existingSalle.setDescription(salle.getDescription());
+        return saleRepository.save(existingSalle);
+    }
+
+    public void deleteById(Long id) {
+        saleRepository.deleteById(id);
+    }
 }

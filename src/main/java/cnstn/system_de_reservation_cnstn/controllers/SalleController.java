@@ -2,6 +2,7 @@ package cnstn.system_de_reservation_cnstn.controllers;
 
 import cnstn.system_de_reservation_cnstn.models.Salle;
 import cnstn.system_de_reservation_cnstn.services.SalleService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,5 +25,14 @@ public class SalleController {
         return salleService.findAll();
     }
 
+    @PutMapping("/{id}")
+    public Salle updateSalle(@PathVariable Long id, @RequestBody Salle salle) {
+        return salleService.updateSalle(id, salle);
+    }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable Long id) {
+        salleService.deleteById(id);
+        return ResponseEntity.ok("Salle supprimée avec succès");
+    }
 }
